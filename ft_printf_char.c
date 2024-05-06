@@ -6,7 +6,7 @@
 /*   By: ssoeno <ssoeno@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 18:19:55 by ssoeno            #+#    #+#             */
-/*   Updated: 2024/05/05 21:11:34 by ssoeno           ###   ########.fr       */
+/*   Updated: 2024/05/06 22:20:17 by ssoeno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,6 @@
 
 int ft_printf_char(char c)
 {
-	char tmp[2];
-
-	tmp[0] = c;
-	tmp[1] = '\0';
-	return  ft_printf_str(tmp);
-	// ft_putchar_fd(c, 1); // 標準出力に1文字書き込む
-	return (1); // 常に1文字書き込まれるので、1を返す
+	ft_putchar_fd(c, 1); // 標準出力に1文字書き込む
+	return (1); 
 }

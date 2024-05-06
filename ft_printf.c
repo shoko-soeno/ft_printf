@@ -6,7 +6,7 @@
 /*   By: ssoeno <ssoeno@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 15:34:38 by ssoeno            #+#    #+#             */
-/*   Updated: 2024/05/05 20:50:07 by ssoeno           ###   ########.fr       */
+/*   Updated: 2024/05/06 23:14:31 by ssoeno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ int handle_format(const char specifier, va_list args)
 		char_count += ft_printf_uint(va_arg(args, unsigned int)); // 符号なし整数
 	else if (specifier == 'x' || specifier == 'X')
 		char_count += ft_printf_hex(va_arg(args, unsigned int), specifier); // 大 or 小文字16進数
-	else if (specifier == '%')
-		ft_printf_percent();
 	else
 		return (-1);
 	return (char_count);
@@ -70,3 +68,10 @@ int	ft_printf(const char *str, ...)
 	va_end(args);
 	return (count);
 }
+
+// int main(){
+// 	char *s = NULL;
+	
+// 	printf("%s, %p\n", s, s);
+// 	ft_printf("%s, %p\n", s, s);
+// }
