@@ -6,7 +6,7 @@
 /*   By: ssoeno <ssoeno@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 15:35:25 by ssoeno            #+#    #+#             */
-/*   Updated: 2024/05/07 10:16:53 by ssoeno           ###   ########.fr       */
+/*   Updated: 2024/05/07 11:07:12 by ssoeno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FT_PRINTF_H
 
 # include <stdarg.h>
-#include <stdint.h>
+# include <stdint.h>
 # include "libft/libft.h"
 # define HEX_UPPER	"0123456789ABCDEF"
 # define HEX_LOWER	"0123456789abcdef"
