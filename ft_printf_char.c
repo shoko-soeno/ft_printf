@@ -6,14 +6,14 @@
 /*   By: ssoeno <ssoeno@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 18:19:55 by ssoeno            #+#    #+#             */
-/*   Updated: 2024/05/06 22:20:17 by ssoeno           ###   ########.fr       */
+/*   Updated: 2024/05/07 09:44:16 by ssoeno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_printf_char(char c)
+int	ft_printf_char(char c)
 {
-	ft_putchar_fd(c, 1); // 標準出力に1文字書き込む
-	return (1); 
+	ft_putchar_fd(c, 1);
+	return (1);
 }

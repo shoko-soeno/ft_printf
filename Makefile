@@ -1,37 +1,39 @@
-TESTS	= tests/main.c
-TNAME	= test
-TOBJS	= ${TESTS:.c=.o}
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: ssoeno <ssoeno@student.42.fr>              +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/05/07 09:52:38 by ssoeno            #+#    #+#              #
+#    Updated: 2024/05/07 10:11:09 by ssoeno           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME	= libftprintf.a
+CC	= cc
+FLAGS	= -Wall -Werror -Wextra
+LIBFT	= ./libft/libft.a
 SRCS	= ${wildcard *.c}
 OBJS	= ${SRCS:.c=.o}
-LIBFT	= ${wildcard libft/*.c}
-LOBJS	= ${LIBFT:.c=.o}
-INCS	= ${wildcard *.h}
-NAME	= libftprintf.a
-CC	= gcc
-FLAGS	= -Wall -Werror -Wextra
-RM	= rm -f
-LIB	= ar rc
-RL	= ranlib
+
+%.o:%.c
+	${CC} ${FLAGS} -c $< -o $@
+
+${NAME}: ${OBJS}
+	make -C libft
+	cp ${LIBFT} ${NAME}
+	${AR} rcs ${NAME} ${OBJS}
 
 all: ${NAME}
 
-.c.o:
-	${CC} ${FLAGS} -c $< ${<:.c.o} -I.${INCS}
-
-${NAME}: runlibft ${OBJS}
-	${LIB} ${NAME} ${OBJS} ${LOBJS}
-	${RL} ${NAME}
-
-runlibft:
-	make -C libft bonus
-
 clean:
+	make fclean -C libft
 	${RM} ${OBJS}
-	${MAKE} -C libft clean
 
 fclean: clean
+	make fclean -C libft
 	${RM} ${NAME}
-	${MAKE} -C libft fclean
 
 re: fclean all
 

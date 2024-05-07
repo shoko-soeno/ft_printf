@@ -6,7 +6,7 @@
 /*   By: ssoeno <ssoeno@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 18:19:42 by ssoeno            #+#    #+#             */
-/*   Updated: 2024/05/05 21:05:38 by ssoeno           ###   ########.fr       */
+/*   Updated: 2024/05/07 08:51:00 by ssoeno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,8 @@ int	ft_printf_int(int n)
 	}
 	if (nb > 9)
 	{
-		count += ft_printf_int(nb / 10); //再帰的に左の桁を処理
-		// ft_putchar_fd((nb % 10) + '0', fd);
+		count += ft_printf_int(nb / 10);
 	}
 	ft_putchar_fd((nb % 10) + '0', 1);
-	return (count + 1); //最後の桁のための1増やす
+	return (count + 1);
 }

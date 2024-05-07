@@ -6,64 +6,49 @@
 /*   By: ssoeno <ssoeno@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 15:34:38 by ssoeno            #+#    #+#             */
-/*   Updated: 2024/05/06 23:14:31 by ssoeno           ###   ########.fr       */
+/*   Updated: 2024/05/07 10:17:35 by ssoeno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int handle_format(const char specifier, va_list args)
+int	handle_format(const char specifier, va_list args)
 {
 	int	char_count;
 
 	char_count = 0;
 	if (specifier == 'c')
-		char_count += ft_printf_char(va_arg(args, int)); // ASCII文字として渡される
+		char_count += ft_printf_char(va_arg(args, int));
 	else if (specifier == 's')
-		char_count += ft_printf_str(va_arg(args, char *)); // 文字列ポインタ
+		char_count += ft_printf_str(va_arg(args, char *));
 	else if (specifier == 'p')
-		char_count += ft_printf_ptr(va_arg(args, void *)); // ポインタを16進数で
+		char_count += ft_printf_ptr(va_arg(args, void *));
 	else if (specifier == 'd' || specifier == 'i')
-		char_count += ft_printf_int(va_arg(args, int)); // 符号付き整数
+		char_count += ft_printf_int(va_arg(args, int));
 	else if (specifier == 'u')
-		char_count += ft_printf_uint(va_arg(args, unsigned int)); // 符号なし整数
+		char_count += ft_printf_uint(va_arg(args, unsigned int));
 	else if (specifier == 'x' || specifier == 'X')
-		char_count += ft_printf_hex(va_arg(args, unsigned int), specifier); // 大 or 小文字16進数
+		char_count += ft_printf_hex(va_arg(args, unsigned int), specifier);
 	else
-		return (-1);
+		char_count = ft_printf_char(specifier);
 	return (char_count);
 }
 
 int	ft_printf(const char *str, ...)
 {
-	size_t	i;
-	size_t	count;
-	va_list	args;
+	size_t		count;
+	va_list		args;
 
-	va_start(args, str); //可変長引数リストを初期化
-	i = 0;
 	count = 0;
-	while (str[i])
+	va_start(args, str);
+	while (*str)
 	{
-		if (str[i] == '%') //出力指定子を見つけたら
-		{
-			if (str[i + 1] == '%') //パーセンテージ記号のエスケープ
-			{
-				ft_putchar_fd('%', 1);
-				count++;
-				i++;//'%'の次の'%'をスキップ
-			}
-			else
-			{
-				count += handle_format(str[i + 1], args); //次の文字が指定子
-				i++;
-			}
-		}
-		else{
-			ft_putchar_fd(str[i], 1);
-			count++;
-		}
-		i++;
+		if (*str != '%')
+			count += ft_printf_char(*str);
+		else if (*str == '%' && *(str + 1))
+			count += handle_format(*(++str), args);
+		if (*str)
+			str++;
 	}
 	va_end(args);
 	return (count);
@@ -71,7 +56,6 @@ int	ft_printf(const char *str, ...)
 
 // int main(){
 // 	char *s = NULL;
-	
 // 	printf("%s, %p\n", s, s);
 // 	ft_printf("%s, %p\n", s, s);
 // }
