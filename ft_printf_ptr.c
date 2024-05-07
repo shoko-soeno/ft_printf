@@ -6,12 +6,11 @@
 /*   By: ssoeno <ssoeno@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 18:27:31 by ssoeno            #+#    #+#             */
-/*   Updated: 2024/05/07 09:42:57 by ssoeno           ###   ########.fr       */
+/*   Updated: 2024/05/07 11:23:59 by ssoeno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdint.h>
 
 int	ft_printf_ptr_hex(uintptr_t num)
 {
